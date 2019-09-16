@@ -1,29 +1,112 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <navbar class="nav"/>
+    <div class="contain">
+      <router-view/>
     </div>
-    <router-view/>
+    <Footer class="footer"/>
+    <goTop/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import goTop from '@/components/goTop.vue'
+import navbar from '@/components/navbar.vue'
+import Footer from '@/components/footer.vue'
+
+export default {
+  components:{
+    navbar,
+    Footer,
+    goTop,
+  },
+  method:{
+    backTop () {
+      const that = this
+      let timer = setInterval(() => {
+        let ispeed = Math.floor(-that.scrollTop / 5)
+        document.documentElement.scrollTop = document.body.scrollTop = that.scrollTop + ispeed
+        if (that.scrollTop === 0) {
+          clearInterval(timer)
+        }
+      }, 16)
+    },
+  },
+  updated(){
+		path.setAttribute("style","top:-490px");
+  },
+  mounted(){
+    window.addEventListener('load',this.backTop);
+  },
+  beforeDestroy() {
+    window.reomveEventListener('load',this.backTop);    
+  },
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+</script>
+
+<style>
+body{
+background-color:#666;
+margin:0;
+padding:0;
+}
+#app{
+font-family: 'Roboto', sans-serif;
+position:relative;
+}
+.nav{
+position:fixed;
+top:0;
+z-index:10;
+}
+.footer{
+position:relative;
+bottom:0;
+}
+.contain{
+}
+h1{
+margin:0;
+}
+
+/* PUBLIC */
+
+.center{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+.flex-btw{
+display:flex;
+justify-content:space-between;
+}
+.column{
+display:flex;
+flex-direction:column;
+}
+.main-wrap{
+background-color:#fff;
+}
+.outerLink{
+cursor:pointer;
+transition:all .3s ease;
+}
+.outerLink:hover{
+opacity:.8;
+transition:all .3s ease;
+}
+.ft-light{
+font-weight:lighter;
+}
+.ft-normal{
+font-weight:400;
+}
+.ft-bold{
+font-weight:700;
+}
+p{
+font-size:14px;
+line-height:1.8;
+color:#555;
 }
 </style>
