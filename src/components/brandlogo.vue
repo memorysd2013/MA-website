@@ -4,7 +4,7 @@
 		<div class="window center">
 			<div class="container" :style="this.rn">
 				<div class="box" v-for="(i,idx) in items">
-					<img class="brand-img" :src="'/brand/'+i+'.png'"
+					<img class="brand-img" :src="'https://ma-website-img.s3.us-east-2.amazonaws.com/img/brand/'+i+'.png'"
 					@mouseover="isShow=true"
 					@mouseout="isShow=false"
 					/>

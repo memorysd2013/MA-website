@@ -13,7 +13,9 @@ data(){
 },
 computed:{
 	move(){
-	return `transform:translateY(${this.tem}px);${this.kvImg}`
+	return `transform:translateY(${this.tem}px);
+	background-image:url('https://ma-website-img.s3.us-east-2.amazonaws.com/img/title/${this.kvImg}.jpg');
+	`
 },
 },
 methods:{

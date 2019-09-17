@@ -6,11 +6,11 @@
 		v-for="(item,idx) in nowSize" 
 		:style="`top:${item[0]}px;
 		left:${item[1]}px;
-		transition:all .3 ease;`">
+		transition:all .6 ease;`">
 
 			<div class="photo" 
 			:style="
-			`background-image:url(\'/media/${(idx+1)}.jpg\');
+			`background-image:url(\'https://ma-website-img.s3.us-east-2.amazonaws.com/img/media/${(idx+1)}.jpg\');
 			width:${item[2]}px;
 			height:${item[3]}px;
 			`"></div>
@@ -91,7 +91,7 @@ data(){
 
 	}
 },
-
+//https://ma-website-img.s3.us-east-2.amazonaws.com/img/media/1.jpg
 
 methods:{
 	getAlbum(){

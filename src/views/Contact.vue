@@ -41,7 +41,7 @@ data(){
 },
 provide(){
   return{
-    kvImg:"background-image:url('/title/contact.jpg')",    
+    kvImg:"contact",    
   }
 },
 components:{

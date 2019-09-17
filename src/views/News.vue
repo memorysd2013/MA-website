@@ -5,7 +5,7 @@
 
       <div class="column center">
         <div v-for="(item,idx) in news" class="news-box column">
-          <img class="outerLink" :src="item.pic"/>
+          <img class="outerLink" :src="`https://ma-website-img.s3.us-east-2.amazonaws.com/img${item.pic}`"/>
           <h2 class="news-title ft-bold">{{item.title}}</h2>
           <h4 class="date">
             <i class="far fa-calendar-alt"></i>{{item.date}}</h4>
@@ -43,14 +43,14 @@ data(){
 },
 provide(){
   return{
-    kvImg:"background-image:url('/title/news.jpg')",    
+    kvImg:"news",    
   }
 },
 components:{
   keytitle,
 },
 mounted(){
-  fetch('/newsData.json')
+  fetch('https://ma-website-img.s3.us-east-2.amazonaws.com/json/newsData.json')
     .then(res=>res.json())
     .then(data=>this.news=data)
     .catch(err=>console.log('fetchNewDataErr',err));

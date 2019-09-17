@@ -12,7 +12,7 @@
         <div class="yt flex-btw">
           <div v-for="(item,key,idx) in ytVideo" class="yt-box box">
 
-            <iframe class="yt-video" :src="target[idx]" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="yt-video" :src="`https://www.youtube.com/embed/${target[idx]}`" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
             <div class="text">
               <h2 class="title ft-bold">{{key}}</h2>
@@ -24,7 +24,7 @@
         <h1 class="topic">JAM TRACK CENTRAL</h1>
         <div class="jtc flex-btw">
           <div v-for="(item,idx) in mediaJtc" class="jtc-box box">
-            <img class="jtc-pic outerLink" :src="item.pic"/>
+            <img class="jtc-pic outerLink" :src="`https://ma-website-img.s3.us-east-2.amazonaws.com/img${item.pic}`"/>
             <div class="text">
               <h2 class="title ft-bold">{{item.title}}</h2>
               <p class="detail">{{item.detail}}</p>
@@ -55,18 +55,13 @@ data(){
       'BREATH':'Acoustic improvisation',
       '70X7':'Original Song'},
     target:[
-      'https://www.youtube.com/embed/YgcPgq5Y1Fs',
-      'https://www.youtube.com/embed/ra3GH3jVkCI',
-      'https://www.youtube.com/embed/JG3UproA74s',
-      'https://www.youtube.com/embed/PEBqZBW_Reg',
-      'https://www.youtube.com/embed/9kSk4sTSpj8',
-      'https://www.youtube.com/embed/gr1T4kDaSjM'
+      'YgcPgq5Y1Fs','ra3GH3jVkCI','JG3UproA74s','PEBqZBW_Reg','9kSk4sTSpj8','gr1T4kDaSjM'
     ]
   }
 },
 provide(){
   return{
-    kvImg:"background-image:url('/title/media.jpg')",
+    kvImg:"media",
   }
 },
 components:{
@@ -74,7 +69,7 @@ components:{
   album,
 },
 created(){
-  fetch('/mediaData.json')
+  fetch('https://ma-website-img.s3.us-east-2.amazonaws.com/json/mediaData.json')
     .then(res=>res.json())
     .then(data=>this.mediaJtc=data);
 }

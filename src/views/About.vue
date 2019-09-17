@@ -60,7 +60,7 @@ data(){
 },
 provide(){
   return{
-    kvImg:"background-image:url('/title/about.jpg')",
+    kvImg:"about",
   }
 },
 components:{

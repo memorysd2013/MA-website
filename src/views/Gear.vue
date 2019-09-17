@@ -19,7 +19,7 @@
           
             <div class="gear-box flex-btw">
               <div>
-                <img :src="gear.pic" class="gear-pic"/>
+                <img :src="`https://ma-website-img.s3.us-east-2.amazonaws.com/img${gear.pic}`" class="gear-pic"/>
               </div>
               <div class="gear-info">
                 <h3 class="ft-normal">{{gear.model}}</h3>
@@ -38,11 +38,11 @@
         <div class="pb flex-btw">
 
           <div class="pb-box">
-            <img class="pb-img outerLink" src="/gear/pb1.jpg"/>
+            <img class="pb-img outerLink" src="https://ma-website-img.s3.us-east-2.amazonaws.com/img/gear/pb1.jpg"/>
             <h3 class="pb-subtitle">MAIN PEDALBOARD</h3>
           </div>
           <div class="pb-box">
-            <img class="pb-img outerLink" src="/gear/pb2.jpg"/>
+            <img class="pb-img outerLink" src="https://ma-website-img.s3.us-east-2.amazonaws.com/img/gear/pb2.jpg"/>
             <h3 class="pb-subtitle font-bold">OVER SEA'S PEDALBOARD</h3>
           </div>
 
@@ -72,7 +72,7 @@ data(){
 },
 provide(){
   return{
-    kvImg:"background-image:url('/title/gear.jpg')",
+    kvImg:"gear",
   }
 },
 components:{
@@ -144,7 +144,7 @@ methods:{
   }
 },
 mounted(){
-  fetch('/gearData.json')
+  fetch('https://ma-website-img.s3.us-east-2.amazonaws.com/json/gearData.json')
   .then(res=>res.json())
   .then(data=>this.gearData=data);
 }
